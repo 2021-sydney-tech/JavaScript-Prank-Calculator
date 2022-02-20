@@ -139,12 +139,12 @@ h1 {
 
 /* animantion */
 .prank {
-    animation: shake 0.4s ease-in;
+    animation: shake 0.2s ease-in;
 }
 
 @keyframes shake {
     0%{
-        transform: translateX(-100px);
+        transform: translateX(100px);
     }
     50%{
         transform: translateX(-100px);
@@ -153,6 +153,6 @@ h1 {
         transform: translateX(100px);
     }
     100%{
-        transform: translateX(100px);
+        transform: translateX(-100px);
     }
 }

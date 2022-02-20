@@ -51,7 +51,6 @@ buttons.forEach( (btn) =>{
             if(symbol.includes(lastCha)) {
                 textToDisplay = textToDisplay.slice(0, -1);
             }
-
             return onTotal();
         }
 
@@ -85,7 +84,9 @@ const display = (toDisplay) => {
 const onTotal = () => {
     const prankNum = randomNumber();
 
-    const total = eval(textToDisplay); + prankNum;
+    const total = eval(textToDisplay) + prankNum;
+    console.log(prankNum);
+    
     display(total);
     textToDisplay = "";  // go back to empty after display total
 
@@ -98,9 +99,8 @@ const onTotal = () => {
 
         //remove the class name after animation ends
         displayEml.addEventListener("animationend", () =>
-        displayEml.classList.remove("prank"));
+            displayEml.classList.remove("prank"));
 
-        
     }
 
 
@@ -115,9 +115,9 @@ const resetDisplay = () => {
 // faking data
 const randomNumber = () => {
     const num = Math.round(Math.random() * 10);  // 0-10
-    console.log(num, "from randomNumber");
+    //console.log(num, "from randomNumber");
     return num <= 3 ? num : 0;
-}
+};
 
 
 
