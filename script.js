@@ -23,14 +23,10 @@ buttons.forEach( (btn) =>{
         const lastCha = textToDisplay[textToDisplay.length -1];
         
         // if . exists, then don't let user enter nothing
-        if(val === "." && textToDisplay.includes(".")) return;
+        if(val === "." && textToDisplay.includes(".") &&!textToDisplay.includes("-") &&!textToDisplay.includes("+") &&!textToDisplay.includes("*") &&!textToDisplay("/")) return;
 
 
         // challenge 
-
-
-
-
 
 
 
@@ -84,12 +80,13 @@ const display = (toDisplay) => {
 const onTotal = () => {
     const prankNum = randomNumber();
 
-    const total = eval(textToDisplay) + prankNum;
+    const total = eval(textToDisplay) + prankNum; // convert the string to formula
     console.log(prankNum);
-    
+
     display(total);
     textToDisplay = "";  // go back to empty after display total
 
+    // prank and animation
     if(prankNum > 0) {
         displayEml.style.backgroundColor = "red";
         displayEml.style.color = "white";
