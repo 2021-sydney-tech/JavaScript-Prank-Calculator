@@ -9,7 +9,6 @@ buttons.forEach( (btn) =>{
     //console.log(btn, "jhkhl");
 
     
-    
     btn.addEventListener("click", () => {
         //console.log(btn)
 
@@ -22,14 +21,21 @@ buttons.forEach( (btn) =>{
 
         const lastCha = textToDisplay[textToDisplay.length -1];
         
+
+         // CHALLENGE METHOD 1
         // if . exists, then don't let user enter nothing
-        if(val === "." && textToDisplay.includes(".") &&!textToDisplay.includes("-") &&!textToDisplay.includes("+") &&!textToDisplay.includes("*") &&!textToDisplay("/")) return;
+        // if(val === "." && textToDisplay.includes(".") &&!textToDisplay.includes("-") &&!textToDisplay.includes("+") &&!textToDisplay.includes("*") &&!textToDisplay("/")) return;
 
+        let noSymbol =! (symbol.some(element => 
+            textToDisplay.includes(element)));
 
-        // challenge 
+        // CHALLENGE METHOD 2
+        //console.log(noSymbol);
+                
+        if(val === "." && textToDisplay.includes(".") && noSymbol ) return;
 
-
-
+        // ------ END CHALLENGE -------
+        
         // now we are checking if there's nothing and if it includes any of the 4 operators then return nothing.
         if(textToDisplay.length < 1 && symbol.includes(val)) return;
 
@@ -45,7 +51,7 @@ buttons.forEach( (btn) =>{
             // if the last character is symbol, then clear that character. Use C 
             
             if(symbol.includes(lastCha)) {
-                textToDisplay = textToDisplay.slice(0, -1);
+                textToDisplay = textToDisplay.slice(0, -1); // start from the beginning but exclude the last char
             }
             return onTotal();
         }
