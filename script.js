@@ -31,8 +31,37 @@ buttons.forEach( (btn) =>{
 
         // CHALLENGE METHOD 2
         //console.log(noSymbol);
-                
-        if(val === "." && textToDisplay.includes(".") && noSymbol ) return;
+        // create substring
+        const operatorLastIndexArray = [];
+        symbol.forEach(operator =>operatorLastIndexArray.push(textToDisplay.lastIndexOf(operator)));
+
+        operatorLastIndexArray.sort((a, b) => b-a)
+        lastIndexOperator = operatorLastIndexArray[0]
+
+        // const lastIndexPlusOperator = textToDisplay.lastIndexOf("+");
+        // const lastIndexMinusOperator = textToDisplay.lastIndexOf("-");
+        // const lastIndexMulOperator = textToDisplay.lastIndexOf("*");
+        // const lastIndexDivOperator = textToDisplay.lastIndexOf("/");
+        // const lastIndexOperator1 = Math.max(lastIndexPlusOperator, lastIndexMinusOperator);
+        // const lastIndexOperator2 = Math.max(lastIndexDivOperator, lastIndexMulOperator);
+        // const lastIndexOperator = Math.max(lastIndexOperator1, lastIndexOperator2); 
+        //console.log(lastIndexOperator);
+        let subString = textToDisplay.slice(lastIndexOperator);
+        //console.log(lastIndexOperator)
+        //console.log(subString)
+        let textToCheck = noSymbol ? textToDisplay : subString;  
+        
+        
+        // if(noSymbol) {
+        //     textToCheck = textToDisplay;
+        // }else{
+        //     textToCheck = subString;
+        // }
+
+        if(val === "." && textToCheck.includes(".")){
+            return;
+        }
+        
 
         // ------ END CHALLENGE -------
         
@@ -86,7 +115,7 @@ const display = (toDisplay) => {
 const onTotal = () => {
     const prankNum = randomNumber();
 
-    const total = eval(textToDisplay) + prankNum; // convert the string to formula
+    const total = eval(textToDisplay) + prankNum; // eval: convert the string to formula
     console.log(prankNum);
 
     display(total);
