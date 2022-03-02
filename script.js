@@ -26,14 +26,14 @@ buttons.forEach( (btn) =>{
         // if . exists, then don't let user enter nothing
         // if(val === "." && textToDisplay.includes(".") &&!textToDisplay.includes("-") &&!textToDisplay.includes("+") &&!textToDisplay.includes("*") &&!textToDisplay("/")) return;
 
-        let noSymbol =! (symbol.some(element => 
-            textToDisplay.includes(element)));
-
         // CHALLENGE METHOD 2
         //console.log(noSymbol);
         // create substring
+        let noSymbol = !(symbol.some(element => 
+            textToDisplay.includes(element)));
+
         const operatorLastIndexArray = [];
-        symbol.forEach(operator =>operatorLastIndexArray.push(textToDisplay.lastIndexOf(operator)));
+        symbol.forEach(operator =>operatorLastIndexArray.push(textToDisplay.lastIndexOf(operator))); // to check in the sub string
 
         operatorLastIndexArray.sort((a, b) => b-a)
         lastIndexOperator = operatorLastIndexArray[0]
@@ -48,8 +48,8 @@ buttons.forEach( (btn) =>{
         //console.log(lastIndexOperator);
         let subString = textToDisplay.slice(lastIndexOperator);
         //console.log(lastIndexOperator)
-        //console.log(subString)
-        let textToCheck = noSymbol ? textToDisplay : subString;  
+        //console.log(subString) 
+        let textToCheck = noSymbol ? textToDisplay : subString;
         
         
         // if(noSymbol) {

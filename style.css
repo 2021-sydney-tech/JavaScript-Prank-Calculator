@@ -73,6 +73,7 @@ h1 {
 
 .items > button:hover{
     background: rgb(255,200,61);
+    border-radius: 0.7rem;
 
 }
 
